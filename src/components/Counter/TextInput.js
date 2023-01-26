@@ -1,4 +1,4 @@
-import {textState} from './Atoms'
+import { textState } from '../Atoms'
 import { useRecoilState } from 'recoil';
 
 export default function TextInput() {
