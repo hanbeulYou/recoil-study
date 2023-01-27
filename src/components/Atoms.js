@@ -10,9 +10,4 @@ const todoListState = atom({
   default: [],
 });
 
-const lastIdState = atom({
-  key: 'lastIdState',
-  default: 0,
-})
-
-export { textState, todoListState, lastIdState }
+export { textState, todoListState }

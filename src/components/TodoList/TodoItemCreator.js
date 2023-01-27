@@ -1,24 +1,33 @@
 import { useState } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { lastIdState, todoListState } from "../Atoms";
+import { useSetRecoilState } from "recoil";
+import { todoListState } from "../Atoms";
+
+let id = 0;
 
 function getId() {
-  const nextId = lastId + 1;
-  setLastId(nextId);
-  return nextId;
+  return id++;
 }
 
 export default function TodoItemCreator() {
   const [inputValue, setInputValue] = useState('');
   const setTodoList = useSetRecoilState(todoListState);
-  const [lastId, setLastId] = useRecoilState(lastIdState);
 
   const addItem = async () => {
     setTodoList((oldTodoList) => [
-      ...oldTodoList, { id:lastId+1, text:inputValue, isComplete:false, }
-    ])
+      ...oldTodoList, 
+      { id: getId(), text:inputValue, isComplete:false, }
+    ]);
+    setInputValue('');
   }
+
+  const onChange = ({target: {value}}) => {
+    setInputValue(value);
+  }
+
   return (
-    <div></div>
+    <div>
+      <input type="text" value={inputValue} onChange={onChange}/>
+      <button onClick={addItem}>Add</button>
+    </div>
   );
 }
