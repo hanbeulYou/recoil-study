@@ -22,7 +22,7 @@ export default function TodoItem({item}) {
 
   return (
     <div>
-      <input type="text" value={item.value} onChange={editItmeText}/>
+      <input type="text" value={item.text} onChange={editItmeText}/>
       <input
         type="checkbox"
         checked={item.isComplete}

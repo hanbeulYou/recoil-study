@@ -10,4 +10,9 @@ const todoListState = atom({
   default: [],
 });
 
-export { textState, todoListState }
+const todoListFilterState = atom({
+  key: 'todoListFilterState',
+  default: 'Show All',
+})
+
+export { textState, todoListState, todoListFilterState }
